@@ -6,29 +6,41 @@ const kTempTextStyle = TextStyle(
 );
 const kNameTextStyle = TextStyle(
   fontFamily: 'Spartan MB',
-  fontSize: 60.0,
+  fontSize: 55.0,
 );
 const kMessageTextStyle = TextStyle(
   fontFamily: 'Spartan MB',
   fontSize: 30.0,
 );
-
+const kMessageTextStyleLista = TextStyle(
+  fontFamily: 'Spartan MB',
+  fontSize: 25.0,
+);
+const kMessageTextStyleFine = TextStyle(
+  fontFamily: 'Spartan MB',
+  fontSize: 25.0,
+);
+const kButtonTextStyle = TextStyle(
+  fontSize: 30.0,
+  fontFamily: 'Spartan MB',
+);
 const kConditionTextStyle = TextStyle(
-  fontSize: 40.0,
+  fontSize: 30.0,
 );
 const kTextFieldInputDecoration = InputDecoration(
   filled: true,
+  contentPadding: EdgeInsets.only(bottom: 40),
   fillColor: Colors.black12,
   hintText: 'Inserisci città',
   hintStyle: TextStyle(
-    color: Colors.grey,
-    fontFamily: 'Spartan MB',
+    color: Colors.white70,
+//    fontFamily: 'Spartan MB',
     fontSize: 10,
   ),
   border: OutlineInputBorder(
     borderRadius: BorderRadius.all(
       Radius.circular(10.0),
     ),
-    borderSide: BorderSide.none,
+//    borderSide: BorderSide.none,
   ),
 );

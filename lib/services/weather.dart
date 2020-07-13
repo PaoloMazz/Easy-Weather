@@ -8,14 +8,17 @@ const openWeatherMapURL = 'https://api.openweathermap.org/data/2.5/weather';
 
 class WeatherModel {
   Future<dynamic> getLocationWeather() async {
-    String citta = "Ostia Antica";
     Location location = Location();
     await location.getCurrentLocation();
-
-//    NetworkHelper networkHelper = NetworkHelper(
-//        '$openWeatherMapURL?lat=${location.latitude}&lon=${location.longitude}&appid=$apiKey&units=metric');
     NetworkHelper networkHelper = NetworkHelper(
-        '$openWeatherMapURL?q=$citta&appid=$apiKey&units=metric&lang=it');
+        '$openWeatherMapURL?lat=${location.latitude}&lon=${location.longitude}&appid=$apiKey&units=metric&lang=it');
+    var weatherData = await networkHelper.getData();
+    return weatherData;
+  }
+
+  Future<dynamic> getCityWeather(String cityName) async {
+    NetworkHelper networkHelper = NetworkHelper(
+        '$openWeatherMapURL?q=$cityName&appid=$apiKey&units=metric&lang=it');
     var weatherData = await networkHelper.getData();
     return weatherData;
   }
@@ -41,35 +44,30 @@ class WeatherModel {
   }
 
   String getMessage(int temp, int condition) {
-    print(condition);
-    if (condition > 300 && condition < 600) print("giusto");
-    if (temp > 25 && condition == 800) {
-      var random = Random();
-      int number;
-      number = random.nextInt(2) + 1;
-      switch (number) {
-        case 1:
-          return "Situazione attuale: me sto a squaglià! 🥵";
-        case 2:
-          return "Fa così caldo che il condizionatore mi ha denunciato per sfruttamento";
-      }
-    }
-    if (condition > 300 && condition < 600) {
-      var random = Random();
-      int number;
-      number = random.nextInt(2) + 1;
-      switch (number) {
-        case 1:
-          return "Tanto al massimo fa du’ gocce";
-        case 2:
-          return "Avevi in programma di uscire?";
-      }
-    } else if (temp > 20) {
-      return 'Time for shorts and 👕';
-    } else if (temp < 10) {
-      return 'You\'ll need 🧣 and 🧤';
-    } else {
-      return 'Bring a 🧥 just in case';
+    var random = Random();
+    int number;
+    number = random.nextInt(10) + 1;
+    switch (number) {
+      case 1:
+        return "Chi desidera vedere l'arcobaleno, deve imparare ad amare la pioggia 🌈";
+      case 2:
+        return "La brezza del mattino ha segreti da dirti. Non tornare a dormire 💤";
+      case 3:
+        return "L'aria fresca della sera è il respiro del vento che si addormenta placido tra le braccia della notte 🌃";
+      case 4:
+        return "Ci vogliono sia il sole sia la pioggia per fare un arcobaleno 🌈";
+      case 5:
+        return "Anche la nebbia ha il suo fascino. Offusca la mente e predispone ai sogni ☁️";
+      case 6:
+        return "Non hai bisogno di un meteorologo per sapere da che parte tira il vento 🌬️";
+      case 7:
+        return "Mai potrai smettere di amare la terra con cui hai condiviso il freddo 🌨";
+      case 8:
+        return "Quando gli alberi chinano il capo, vuol dire che il vento sta passando 🍃";
+      case 9:
+        return "Il mare di solito non si muove senza l'impulso del vento ⛈️";
+      case 10:
+        return "Anche un sasso viene consumato da una pioggia troppo forte ☔️";
     }
   }
 }
